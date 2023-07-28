@@ -1,0 +1,8 @@
+{
+  "name": "GetOn-Ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "59a969cd"
+}
