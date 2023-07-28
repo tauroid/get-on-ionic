@@ -1,0 +1,80 @@
+<ion-content>
+  <app-quiz-template>
+    <div class="max-w-sm w-full">
+      <app-section-title [border]="false" title="Your details:"/>
+      <div class="flex w-full justify-between items-start border-t py-1">
+        <span class="text-xl text-[#1C75BC] font-extrabold">
+          Regions:
+        </span>
+        <div class="text-right">
+          <p *ngFor="let region of regions">{{region}}</p>
+        </div>
+      </div>
+      <div class="flex w-full justify-between items-start gap-12 border-t py-1">
+        <span class="text-xl text-[#1C75BC] font-extrabold">
+          Eligibility criteria:
+        </span>
+        <div class="text-right leading-4">
+          <p *ngFor="let benefit of benefits; let i=index"
+             [class]="(i ? 'mt-2' : 'mt-1')
+                     +(i === benefits.length-1 ? ' mb-1' : '')">
+            {{benefit}}
+          </p>
+        </div>
+      </div>
+      <div class="flex w-full justify-between items-center gap-12 border-t py-1">
+        <span class="text-xl text-[#1C75BC] font-extrabold">
+          Budget:
+        </span>
+        <div class="text-right flex items-center justify-end">
+          <div class="text-2xl font-extrabold me-1">
+            £<span class="text-3xl">{{budget}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex w-full justify-between items-center gap-12 border-t py-1">
+        <span class="text-xl text-[#1C75BC] font-extrabold">
+          Internet usage:
+        </span>
+        <div class="text-right flex items-center justify-end">
+          <div class="text-2xl font-extrabold me-1">
+            <span class="text-3xl">
+              {{usage}}
+            </span>
+          </div>
+          <div class="relative top-[1px]">Mbps</div>
+        </div>
+      </div>
+      <div *ngIf="deals; then dealsBlock else searchingBlock"></div>
+      <ng-template #dealsBlock>
+        <div *ngIf="dealsError(); else noError">
+          {{deals}}
+          An error occurred fetching the offers
+        </div>
+        <ng-template #noError>
+          <div *ngIf="validDeals && validDeals.length > 0; then someValid else noValid"></div>
+          <ng-template #someValid>
+            <app-section-title title="Results:" />
+          </ng-template>
+          <ng-template #noValid>
+            <div class="max-w-sm text-center text-lg text-[#1C75BC] border-t-4 border-[#1C75BC] mt-2 py-3">
+              <p>It looks like there weren&apos;t any precise matches, sorry.</p>
+              <p>Double-check your details, or try taking a look through our
+                <a class="underline"
+                   href="https://www.ofcom.org.uk/phones-telecoms-and-internet/advice-for-consumers/costs-and-billing/social-tariffs">
+                  source data</a>
+                in case we&apos;ve missed anything.
+              </p>
+             </div>
+          </ng-template>
+          <div *ngIf="invalidDeals && invalidDeals.length > 0">
+
+          </div>
+        </ng-template>
+      </ng-template>
+      <ng-template #searchingBlock>
+        <app-section-title title="Searching..." />
+      </ng-template>
+    </div>
+  </app-quiz-template>
+</ion-content>

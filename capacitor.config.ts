@@ -5,7 +5,10 @@ const config: CapacitorConfig = {
   appName: 'GetOn-Ionic',
   webDir: 'www',
   server: {
-    androidScheme: 'https'
+    androidScheme: 'https',
+    allowNavigation: [
+      "https://get-on.vercel.app"
+    ]
   }
 };
 

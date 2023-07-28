@@ -1,0 +1,26 @@
+<ion-content>
+  <app-quiz-template>
+    In just three quick steps we can find you the best broadband
+    connection plan to meet your needs.
+    <div class="w-full flex-grow flex flex-col items-center gap-4">
+      <img class="mt-4 w-7/12 max-w-[220px]" src={{Step1of3}} alt="Step 1 of 3" />
+      <form (submit)="onSubmit($event)"
+            class="flex flex-col items-center">
+        <div>
+          <div class="flex justify-between items-center">
+            <div class="text-[#1C75BC] font-semibold p-2 text-center">
+              What is the postcode needing connection?
+            </div>
+          </div>
+            <div class="px-2">
+              <app-postcode-live #postcodeLive [submit]="submit" />
+            </div>
+        </div>
+        <div class="h-16"></div>
+        <div>
+          <input #submit hidden type="submit" class="text-lg text-blue-800 underline hover:text-blue-400 cursor-pointer" />
+        </div>
+      </form>
+    </div>
+  </app-quiz-template>
+</ion-content>

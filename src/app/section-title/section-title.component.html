@@ -1,0 +1,8 @@
+<div [class]="'max-w-sm w-full text-3xl text-[#1C75BC]'
+              +' mt-2 pb-2 '
+              + 'font-bold'
+              +(border ? ' border-t border-[#1C75BC] pt-4' : '')
+              +(border && border !== 'block' ? ' border-t-4' : '')
+              +(border === 'block' ? ' border-t-[200px] pt-10': '')">
+  {{title}}
+</div>

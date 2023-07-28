@@ -1,0 +1,27 @@
+<div [class]="'flex flex-row p-1'
+      +' mt-2 rounded-3xl text-center border'
+      +' w-full shadow-[inset_2px_2px_3px_#888]'
+      +(postcodeValidInternal === false ? ' outline outline-[3px] outline-red-500'
+      : (postcodeValidInternal === true ? ' outline outline-[3px] outline-green-500'
+      : ' focus-within:outline focus-within:outline-blue-600 focus-within:outline-[3px]'))"
+     (click)="input?.focus()" >
+  <div class="flex-grow flex flex-row items-center justify-center ms-2 my-1">
+    <span class="block w-full">
+      <input #input
+          name="postcode"
+          class="outline-none w-32 text-center bg-white"
+          type="text"
+          (input)="onChange($event)"
+        />
+    </span>
+  </div>
+  <button class="flex-none w-8"
+          (click)="submitRef?.click()">
+    <img src={{arrow}} alt="right arrow" />
+  </button>
+</div>
+<div class="text-center mt-1 text-gray-400">{{postcodeError}}</div>
+<div *ngIf="regions.length > 0"
+     class="text-center text-gray-400" >
+  Regions: {{regions.join(', ')}}
+</div>

@@ -1,0 +1,46 @@
+<div class="flex flex-col items-center">
+  <div>
+  <div class="flex flex-row items-center w-full">
+    <div class="font-bold text-[#1C75BC] text-lg text-left w-full flex-grow">
+      Your monthly budget
+    </div>
+  </div>
+  <div class="flex flex-row justify-around w-full m-3">
+    <div *ngFor="let budget of budgets; let id=index"
+         class="flex flex-col items-center cursor-pointer"
+         (click)="setBudgetId(id)" >
+      <div class="shadow-[inset_2px_2px_3px_#888] w-7 h-7
+                  rounded-2xl flex justify-center items-center">
+        <div *ngIf="id === budgetId"
+             class="bg-[#1C75BC] rounded-xl w-4 h-4"></div>
+      </div>
+      <div class="p-2">
+        £{{budget}}{{id === budgets.length-1 ? '+' : ''}}
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-row items-center w-full mb-2">
+    <div class="font-bold text-[#1C75BC] text-lg text-left w-full flex-grow leading-5">
+      Which of these apply to you?
+    </div>
+  </div>
+  <div *ngFor="let benefit of benefits; let i=index"
+       class="my-1 w-full flex flex-row justify-between items-center">
+    {{benefit}}
+    <div
+       class="h-7 w-7 rounded-xl shadow-[inset_2px_2px_3px_#888] relative cursor-pointer flex-none ms-4"
+       style="border:2px solid #1C75BC"
+       (click)="onBoxClick(i)" >
+      <div *ngIf="selectedBenefits !== undefined &&
+                  selectedBenefits[i]"
+           class="w-10 h-10 absolute"
+           style="top: -11px; left: -3px" >
+        <img src={{tick}} alt="blue tick" />
+      </div>
+    </div>
+  </div>
+</div>
+<button class="mt-4" (click)="onNextClick()">
+  <img src={{arrow}} alt="right arrow" class="w-8"/>
+</button>
+</div>

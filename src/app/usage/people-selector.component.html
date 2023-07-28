@@ -1,0 +1,12 @@
+<div class="flex my-2 items-center max-w-[240px] justify-between w-full">
+  <div class="flex justify-start">
+    <button *ngFor="let x of [0,1,2,3,4]; let i=index"
+      (click)="clickPerson(i)"
+            class="h-[70px]" >
+      <img class="h-full"
+           [alt]="i+1 <= people ? 'Selected person icon' : 'Unselected person icon'"
+           [src]="i+1 <= people ? fullPerson : emptyPerson" />
+    </button>
+  </div>
+  <p>{{people}}{{people > 4 ? '+ ':' '}}{{people === 1 ? 'person' : 'people'}}
+</div>
