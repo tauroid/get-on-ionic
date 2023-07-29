@@ -55,6 +55,14 @@
           <div *ngIf="validDeals && validDeals.length > 0; then someValid else noValid"></div>
           <ng-template #someValid>
             <app-section-title title="Results:" />
+            <app-results-item
+              *ngFor="let deal of validDeals; let id=index"
+              [item]="deal"
+              [first]="id === 0"
+              [regions]="regions"
+              [budget]="budget"
+              [usage]="usage"
+            />
           </ng-template>
           <ng-template #noValid>
             <div class="max-w-sm text-center text-lg text-[#1C75BC] border-t-4 border-[#1C75BC] mt-2 py-3">
@@ -68,7 +76,20 @@
              </div>
           </ng-template>
           <div *ngIf="invalidDeals && invalidDeals.length > 0">
-
+            <app-section-title
+              title="Close misses:"
+              [border]="
+                     (validDeals && validDeals.length > 0)
+                     ? 'block' : true"/>
+            <app-results-item
+              *ngFor="let deal of invalidDeals.slice(0,5);
+                      let id=index"
+              [item]="deal"
+              [first]="id === 0"
+              [regions]="regions"
+              [budget]="budget"
+              [usage]="usage"
+            />
           </div>
         </ng-template>
       </ng-template>

@@ -11,6 +11,7 @@ import { QuizTemplateModule } from '../quiz-template/quiz-template.module';
 import { SectionTitleComponent } from '../section-title/section-title.component';
 import { StorageService } from '../storage-service/storage-service.service';
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { ResultsItemComponent } from '../results-item/results-item.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,10 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     ResultsPageRoutingModule,
     QuizTemplateModule,
   ],
-  declarations: [ResultsPage, SectionTitleComponent]
+  declarations: [
+    ResultsPage,
+    SectionTitleComponent,
+    ResultsItemComponent
+  ]
 })
 export class ResultsPageModule {}

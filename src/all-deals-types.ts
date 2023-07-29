@@ -39,3 +39,6 @@ export type Deal = {
   regions: OfcomRegion[],
   benefits: Benefit[]
 }
+
+export type FilteredDeal =
+  Deal&{penalty:number,maxPenalty:number,valid:boolean}

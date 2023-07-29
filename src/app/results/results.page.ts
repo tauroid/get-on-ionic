@@ -1,10 +1,7 @@
 import axios from 'axios'
 import { Component, OnInit } from '@angular/core';
-import { Benefit, Deal, OfcomRegion } from 'src/all-deals-types';
+import { Benefit, FilteredDeal, OfcomRegion } from 'src/all-deals-types';
 import { StorageService } from '../storage-service/storage-service.service';
-
-type FilteredDeal =
-  Deal&{penalty:number,maxPenalty:number,valid:boolean}
 
 @Component({
   selector: 'app-results',
