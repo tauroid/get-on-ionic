@@ -1,0 +1,85 @@
+<div class="flex-col flex items-center max-w-sm w-full">
+  <div [class]="'flex justify-between gap-4 items-start w-full'
+                +(first ? '' : ' border-t border-black pt-3')" >
+    <div class="flex-[2] text-base">{{item.name}}</div>
+    <div class="flex-[3] text-right flex flex-col">
+      <div [class]="
+        'text-2xl font-extrabold '
+        +'font-bold'
+        +(budget*100 < item.price.pounds*100+item.price.pence
+          ? ' text-[#BE1E2D]' : ' text-[#1C75BC]')
+      ">
+        £<span class="text-3xl"><!--
+        -->{{item.price.pounds}}<!--
+        --></span><!--
+        -->.{{((item.price.pence) < 10 ? '0' : '')
+          +item.price.pence}}
+      </div>
+      <div>
+        per month
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-around w-full items-center mt-3 mb-1">
+    <div *ngIf="item.speed === 'mobile';
+                then mobileSpeed else mbpsSpeed"></div>
+    <ng-template #mobileSpeed>
+      <div class="text-[#1C75BC] text-center font-bold" >
+        <p>Mobile</p>
+        <p>network</p>
+        <p>speeds</p>
+      </div>
+    </ng-template>
+    <ng-template #mbpsSpeed>
+      <div class="flex flex-col justify-around items-center">
+        <div>up to</div>
+        <div [class]="
+          'text-[#1C75BC] text-3xl '
+          +'font-bold'
+          +((item.speed !== 'mobile' && usage > item.speed)
+            ? ' text-[#BE1E2D]' : ' text-[#1C75BC]')
+          ">
+          {{item.speed}}
+        </div>
+        <div>Mbps</div>
+      </div>
+    </ng-template>
+    <div class="text-right">
+      <div *ngIf="item.regions.includes('UK');
+                  then ukWide else regionSpecific"></div>
+      <ng-template #ukWide>
+        <div class="flex items-center justify-end">
+          <img class="w-6 h-6" src={{tick}} alt="blue tick" />
+          <p class="font-bold text-[#1C75BC]">
+            UK wide
+          </p>
+        </div>
+      </ng-template>
+      <ng-template #regionSpecific>
+        <p>Available in:</p>
+        <ng-container *ngFor="let region of item.regions">
+          <div *ngIf="regions.includes(region);
+                      else otherRegion"
+               class="flex items-center justify-end">
+            <img class="w-6 h-6" src={{tick}} alt="blue tick" />
+            <p class="font-bold text-[#1C75BC]">
+              {{region}}
+            </p>
+          </div>
+          <ng-template #otherRegion>
+            <div class="font-bold text-gray-400">
+              {{region}}
+            </div>
+          </ng-template>
+        </ng-container>
+      </ng-template>
+    </div>
+  </div>
+  <div class="w-fit m-2 text-center">
+    <a href={{item.href}} target="_blank"
+       class="inline-block flex justify-center">
+      <img src={{GoToWebsite}} alt="Go to website"
+           class="max-w-[90%] w-64" />
+    </a>
+  </div>
+</div>
