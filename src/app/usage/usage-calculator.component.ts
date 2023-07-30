@@ -2,7 +2,7 @@ import { Component } from '@angular/core'
 import { StorageService } from '../storage-service/storage-service.service'
 import { Router } from '@angular/router'
 
-const coefficients = {
+export const coefficients: Record<string,number> = {
     streaming: 4.5,
     social: 2,
     work: 5,

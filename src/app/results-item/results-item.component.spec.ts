@@ -15,6 +15,23 @@ describe('ResultsItemComponent', () => {
 
     fixture = TestBed.createComponent(ResultsItemComponent);
     component = fixture.componentInstance;
+    component.item = {
+      name: 'very good deal',
+      href: 'https://good.deal',
+      price: {
+        pounds: 1,
+        pence: 0
+      },
+      speed: 'mobile',
+      regions: [ 'UK' ],
+      benefits: [],
+      penalty: 0,
+      maxPenalty: 0,
+      valid: true
+    }
+    component.regions = [
+      'England'
+    ]
     fixture.detectChanges();
   }));
 

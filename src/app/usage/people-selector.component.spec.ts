@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { PeopleSelectorComponent } from './people-selector.component';
+import { PeopleSelector } from './people-selector.component';
 
-describe('PeopleSelectorComponent', () => {
-  let component: PeopleSelectorComponent;
-  let fixture: ComponentFixture<PeopleSelectorComponent>;
+describe('PeopleSelector', () => {
+  let component: PeopleSelector;
+  let fixture: ComponentFixture<PeopleSelector>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PeopleSelectorComponent ],
+      declarations: [ PeopleSelector ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(PeopleSelectorComponent);
+    fixture = TestBed.createComponent(PeopleSelector);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
